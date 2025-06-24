@@ -54,3 +54,10 @@ pnpm test
 This project is licensed under the MIT License.
 
 This README will be updated as the project evolves.
+
+## Screenshots
+<img width="960" alt="Screenshot_2" src="https://github.com/user-attachments/assets/359bd8a5-6979-4cd0-8540-c02be2a1f2e1" />
+<img width="948" alt="Screenshot_3" src="https://github.com/user-attachments/assets/4f99d7d3-8aa9-4bc4-b379-6d2ea718f06c" />
+<img width="946" alt="Screenshot_2" src="https://github.com/user-attachments/assets/5519291a-3c94-41bc-9ca0-6ee2194aea77" />
+<img width="944" alt="Screenshot_1" src="https://github.com/user-attachments/assets/1a17f1d0-c976-40bd-9c68-bf48968095b9" />
+
