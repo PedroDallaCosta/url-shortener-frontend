@@ -1,0 +1,24 @@
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+export default function CardC({ title, description }) {
+  return (
+    <>
+      <Card className="w-full max-w-sm bg-transparent border border-[#3B4A54] shadow-none">
+        <CardHeader>
+          <CardTitle className="text-white font-normal text-[0.9rem] ">{title}</CardTitle>
+          <CardDescription className="text-white font-bold text-[1.45rem]">
+            {description.toLocaleString()}
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    </>
+  )
+}
