@@ -5,7 +5,7 @@ import Items from "./Items"
 export default function Overview({ clicks, uniqueClicks, topReferrers, url, createdAt, passwordProtected, expirationDate, path }) {
   return (
     <div className="w-full mt-5 h-full">
-      <div className="w-full flex justify-between items-center gap-5">
+      <div className="w-full flex justify-between items-center sm:gap-5 gap-2">
         <CardC title="Total Clicks" description={clicks}></CardC>
         <CardC title="Unique Clicks" description={uniqueClicks}></CardC>
         <CardC title="Top Referrer" description={topReferrers}></CardC>

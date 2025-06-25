@@ -11,10 +11,12 @@ import {
 export default function CardC({ title, description }) {
   return (
     <>
-      <Card className="w-full max-w-sm bg-transparent border border-[#3B4A54] shadow-none">
+      <Card className="w-full max-w-sm bg-transparent border border-[#3B4A54] shadow-none overflow-hidden">
         <CardHeader>
-          <CardTitle className="text-white font-normal text-[0.9rem] ">{title}</CardTitle>
-          <CardDescription className="text-white font-bold text-[1.45rem]">
+          <CardTitle className="text-white font-normal text-[0.9rem] sm:text-[1rem] md:text-[1.1rem]">
+            {title.length > 20 ? title.slice(0, 17) + "..." : title}
+          </CardTitle>
+          <CardDescription className="text-white font-bold text-[1.2rem] sm:text-[1.45rem] md:text-[1.6rem] truncate">
             {description.toLocaleString()}
           </CardDescription>
         </CardHeader>

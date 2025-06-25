@@ -41,7 +41,7 @@ export default function UrlDetails() {
 
   return (
     <div className='flex flex-col items-center justify-center p-2'>
-      <div className='p-1 w-full max-w-3/5'>
+      <div className='p-1 w-full  max-w-9/10 sm:max-w-3/5'>
         <h1 className='text-2xl font-medium text-white mt-6'>Link Details</h1>
         <h2 className='font-light text-[#9CABBA] text-sm'>View detailed analytics for your shortened link.</h2>
 

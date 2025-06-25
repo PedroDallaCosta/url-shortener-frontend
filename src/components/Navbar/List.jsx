@@ -18,7 +18,7 @@ export default function List() {
 
   return (
     <>
-      <ul className="flex">
+      <ul className="flex items-center">
         {components.map(({ title, refer }, index) => (
           <li key={refer} >
             <Link to={refer} className={`mx-4 text-sm hover:!text-[#2194F2] ${activeIndex == index ? "!text-[#21acf2]" : "!text-white"} `} onClick={() => handleClick(index)}>
