@@ -4,7 +4,7 @@ import { Suspense, lazy } from 'react';
 import { Toaster } from "@/components/ui/sonner"
 
 import Container from './components/Container';
-import Navbar from './components/navbar/Navbar'
+import Navbar from './components/Navbar'
 
 const Home = lazy(() => import('./pages/Home/App'));
 const Dashboard = lazy(() => import('./pages/Dashboard/App'));

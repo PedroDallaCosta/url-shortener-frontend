@@ -1,9 +1,6 @@
 import {
   Card,
-  CardAction,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -16,6 +13,7 @@ export default function CardC({ title, description }) {
           <CardTitle className="text-white font-normal text-[0.9rem] sm:text-[1rem] md:text-[1.1rem]">
             {title.length > 20 ? title.slice(0, 17) + "..." : title}
           </CardTitle>
+
           <CardDescription className="text-white font-bold text-[1.2rem] sm:text-[1.45rem] md:text-[1.6rem] truncate">
             {description.toLocaleString()}
           </CardDescription>

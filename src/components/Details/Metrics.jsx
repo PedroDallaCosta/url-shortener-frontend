@@ -1,15 +1,13 @@
-import Graph from "./Graph"
 import {
     Card,
-    CardAction,
-    CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import Item from "./Item"
-import Title from "../title"
+
+import Item from "@/components/Details/Item"
+import Title from "@/components/Details/Title"
+import Graph from "@/components/Details/Graph"
 
 export default function Metrics({ totalClicks = 0, uniqueClicks = 0, referrer = "..." }) {
     return (
@@ -20,10 +18,13 @@ export default function Metrics({ totalClicks = 0, uniqueClicks = 0, referrer = 
                     <CardTitle className="text-white font-medium text-[0.9rem]">Link Clicks Over Time</CardTitle>
                     <CardDescription className="text-white font-bold text-[1.75rem]">1,234</CardDescription>
                     <CardDescription className="text-[#A3ABB5] font-regular text-[0.9rem]">Last 30 Days <span className="text-green-500">+15%</span></CardDescription>
+                    
                     <Graph ></Graph>
                 </CardHeader>
             </Card>
+
             <Title title={"Historical Data"} className={"mt-7"}></Title>
+
             <div className="w-full mt-7 h-17 flex flex-col justify-between">
                 <Item title="Total Clicks" value={totalClicks} />
                 <Item title="Unique Clicks" value={uniqueClicks} />

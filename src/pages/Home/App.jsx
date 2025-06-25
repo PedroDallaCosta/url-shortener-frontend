@@ -1,9 +1,10 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import { Form } from "@/components/pages/Home/Form"
 import { Loader2Icon } from "lucide-react"
-import Advance from "@/components/pages/Home/Advance"
+
+import Advance from "@/components/Home/Advance"
+import { Form } from "@/components/Home/Form"
 
 export default function Home() {
   const {

@@ -1,4 +1,4 @@
-import Map from "./Map";
+import Map from "@/components/Details/Map";
 
 export default function Location() {
   return (
