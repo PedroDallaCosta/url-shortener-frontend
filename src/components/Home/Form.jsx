@@ -1,85 +1,38 @@
-import { z } from 'zod';
-import { toast } from "sonner"
-import { useState } from "react"
-import { createShortUrl } from '@/service/api';
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Loader2Icon } from "lucide-react"
+import { useForm } from "@/hooks/useForms"
 
-const urlSchema = z.object({
-    url: z.string().url({ message: "Invalid URL" }),
-    password: z.string().optional({ message: "Invlid password " }),
-    expireTime: z.preprocess((val) => {
-        if (typeof val === "string" || val instanceof Date) {
-            const date = new Date(val);
-            // Check if date is valid
-            if (!isNaN(date.getTime())) {
-                return date;
-            }
-            // Invalid date string or object -> return undefined to fail validation
-            return undefined;
-        }
-        return val;
-    }, z.date().optional()),
-})
+import Advance from "@/components/Home/Advance"
 
-export const Form = () => {
-    const [url, setUrl] = useState("");
-    const [password, setPassword] = useState("");
-    const [expireTime, setExpireTime] = useState("");
-    const [loading, setLoading] = useState(false)
+export default function Form({ }) {
+  const {
+    setUrl,
+    setPassword,
+    expireTime,
+    setExpireTime,
+    loading,
+    handleSubmit,
+  } = useForm()
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  return (
+    <>
+      <form onSubmit={handleSubmit} className="w-full">
+        <Input className="mt-7 text-white" placeholder="Paste your link" onChange={(e) => setUrl(e.target.value)} />
+        <Label htmlFor="advance-mode" className="text-white mt-12 font-medium">Advanced info</Label>
+        <Advance setPassword={setPassword} setExpireTime={setExpireTime} expireTime={expireTime} />
 
-        const schema = {
-            url: url,
-            password: password,
-            expireTime: expireTime
-        }
-
-        const { success, data = {}, error = {} } = urlSchema.safeParse(schema)
-        if (!success) {
-            error.errors.forEach(({ message }) => {
-                toast.error(message)
-            })
-
-            setLoading(false)
-            return
-        }
-
-        setLoading(true)
-
-        const { url: URL, password: PASSWORD, expireTime: EXPIRETIME } = data
-
-        try {
-            const result = await createShortUrl(data);
-            if (!result.success) {
-                const msg = result.error?.message ?? "Failed to create short URL";
-                throw new Error(msg);
-            }
-
-            const { shortUrl = "/" } = result;
-            // setShortenedUrl(result.shortUrl);
-            toast.message('Link shortened successfully!', {
-                description: shortUrl,
-            })
-
-            window.location.href = shortUrl
-        } catch (apiError) {
-            const errorMessage = apiError instanceof Error ? apiError.message : "Unknown error";
-            toast.error(errorMessage);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    return {
-        url,
-        setUrl,
-        password,
-        setPassword,
-        expireTime,
-        setExpireTime,
-        loading,
-        setLoading,
-        handleSubmit,
-    }
+        <Button className="mt-3 bg-[#2194F2] outline-none hover:bg-[#2163f2] w-full py-3" variant="default" type="submit" disabled={loading} >
+          {
+            !loading ? 'Shorten'
+              : <>
+                <Loader2Icon className="animate-spin" />
+                Please wait
+              </>
+          }
+        </Button>
+      </form>
+    </>
+  )
 }

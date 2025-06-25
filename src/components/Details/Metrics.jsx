@@ -6,13 +6,14 @@ import {
 } from "@/components/ui/card"
 
 import Item from "@/components/Details/Item"
-import Title from "@/components/Details/Title"
 import Graph from "@/components/Details/Graph"
+import Title from "@/components/Title"
 
 export default function Metrics({ totalClicks = 0, uniqueClicks = 0, referrer = "..." }) {
     return (
         <div className="w-full mt-5">
             <Title title={"Clicks History"}></Title>
+
             <Card className="w-full mt-7 h-70 bg-transparent border-[#3B4A54] shadow-none">
                 <CardHeader>
                     <CardTitle className="text-white font-medium text-[0.9rem]">Link Clicks Over Time</CardTitle>

@@ -28,8 +28,6 @@ export default function UrlData({ urlData }) {
     </div>
   )
 
-
-
   const { totalClicks, uniqueClicks, referrer, createdAt, url, expiresAt, passwordProtected, path } = urlData;
   return (
     <>

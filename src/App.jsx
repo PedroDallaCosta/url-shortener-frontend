@@ -6,12 +6,12 @@ import { Toaster } from "@/components/ui/sonner"
 import Container from './components/Container';
 import Navbar from './components/Navbar'
 
-const Home = lazy(() => import('./pages/Home/App'));
-const Dashboard = lazy(() => import('./pages/Dashboard/App'));
-const Pricing = lazy(() => import('./pages/Pricing/App'));
-const Blog = lazy(() => import('./pages/Blog/App'));
-const Help = lazy(() => import('./pages/Help/App'));
-const UrlDetails = lazy(() => import('./pages/Details/App'));
+const Home = lazy(() => import('./pages/Home/Home'));
+const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
+const Pricing = lazy(() => import('./pages/Pricing/Pricing'));
+const Blog = lazy(() => import('./pages/Blog/Blog'));
+const Help = lazy(() => import('./pages/Help/Help'));
+const UrlDetails = lazy(() => import('./pages/Details/Details'));
 
 function App() {
   return (

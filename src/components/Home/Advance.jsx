@@ -12,7 +12,6 @@ import { Eye, EyeOff } from "lucide-react";
 
 export default function Advance({ setPassword, setExpireTime, expireTime }) {
   const [open, setOpen] = useState(false)
-
   const [passwordA, setPasswordA] = useState("")
   const [showPassword, setShowPassword] = useState(false)
 

@@ -4,6 +4,8 @@ import { toast } from "sonner"
 import { getUrlDetails } from '@/service/api';
 
 import UrlData from '@/components/Details/UrlData';
+import Title from '@/components/Title';
+import SubTitle from '@/components/SubTitle';
 
 export default function UrlDetails() {
   const { shortId } = useParams();
@@ -34,11 +36,10 @@ export default function UrlDetails() {
   }, [shortId]);
 
   return (
-    <div className='flex flex-col items-center justify-center p-2'>
-      <div className='p-1 w-full  max-w-9/10 sm:max-w-3/5'>
-        <h1 className='text-2xl font-medium text-white mt-6'>Link Details</h1>
-        <h2 className='font-light text-[#9CABBA] text-sm'>View detailed analytics for your shortened link.</h2>
-
+    <div className='flex flex-col items-center justify-center p-2 mt-6'>
+      <div className='p-1 w-full max-w-9/10 sm:max-w-3/5 '>
+        <Title>Link Details</Title>
+        <SubTitle>View detailed analytics for your shortened link.</SubTitle>
         <UrlData urlData={urlData}></UrlData>
       </div>
     </div>

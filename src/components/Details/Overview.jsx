@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/table"
 
 import CardC from "@/components/Details/Card"
-import Title from "@/components/Details/Title"
+import Title from "@/components/Title"
 
 export default function Overview({ clicks, uniqueClicks, topReferrers, url, createdAt, passwordProtected, expiresAt, path }) {
   const details = [
@@ -40,7 +40,7 @@ export default function Overview({ clicks, uniqueClicks, topReferrers, url, crea
         <CardC title="Top Referrer" description={topReferrers}></CardC>
       </div>
 
-      <Title title={"Link details"} className={"mt-7"}></Title>
+      <Title className={"mt-7 text-xl"}>Details</Title>
       
       <Table>
         <TableBody>
