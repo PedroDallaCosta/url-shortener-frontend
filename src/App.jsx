@@ -6,12 +6,14 @@ import { Toaster } from "@/components/ui/sonner"
 import Container from './components/Container';
 import Navbar from './components/Navbar'
 
-const Home = lazy(() => import('./pages/Home/Home'));
-const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
-const Pricing = lazy(() => import('./pages/Pricing/Pricing'));
-const Blog = lazy(() => import('./pages/Blog/Blog'));
-const Help = lazy(() => import('./pages/Help/Help'));
-const UrlDetails = lazy(() => import('./pages/Details/Details'));
+const Home = lazy(() => import('./pages/Home'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Help = lazy(() => import('./pages/Help'));
+const UrlDetails = lazy(() => import('./pages/Details'));
+const Login = lazy(() => import('./pages/Login'));
+const Signup = lazy(() => import('./pages/Signup'));
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/help" element={<Help />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/details/:shortId" element={<UrlDetails />} />
               </Routes>
             </Suspense>

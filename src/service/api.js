@@ -36,3 +36,16 @@ export const getUrlDetails = async (shortId) => {
 
   return { success: true, data: response };
 };
+
+export const loginUser = async(user) => {
+  // Simulate API call to login
+  const response = {
+    success: true,
+    error: {
+      status: 401,
+      message: "Invalid credentials"
+    }
+  }
+
+  return response
+}
