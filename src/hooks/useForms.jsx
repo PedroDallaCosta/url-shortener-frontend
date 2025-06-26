@@ -2,6 +2,7 @@ import { createShortUrl } from "@/service/api";
 import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useSchema } from "./useSchema";
 
 const urlSchema = z.object({
   url: z.string().url({ message: "Invalid URL" }),
@@ -25,14 +26,10 @@ export const useForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const schema = { url, password, expireTime };
-    const { success, data = {}, error = {} } = urlSchema.safeParse(schema);
-
-    if (!success) {
-      error.errors.forEach(({ message }) => toast.error(message));
-      return;
-    }
-
+    const infos = { url, password, expireTime };
+    const { success, data = {}, error = {} } = useSchema(urlSchema, infos)
+    if (!success) return
+    
     setLoading(true);
 
     try {

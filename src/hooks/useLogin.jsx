@@ -2,6 +2,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { loginUser } from "@/service/api";
 import { useState } from "react";
+import { useSchema } from "./useSchema";
 
 const credentialSchema = z.object({
   email: z.string().email({ message: "Invalid e-mail" }),
@@ -15,12 +16,9 @@ export const useLogin = () => {
   const login = async (e) => {
     e.preventDefault()
 
-    const schema = { email: email, password: password }
-    const { success, data = {}, error = {} } = credentialSchema.safeParse(schema);
-    if (!success) {
-      error.errors.forEach(({ message }) => toast.error(message));
-      return;
-    }
+    const infos = { email: email, password: password }
+    const { success, data = {} } = useSchema(credentialSchema, infos)
+    if (!success) return
 
     try {
       const result = await loginUser(data)
