@@ -1,8 +1,22 @@
-import { toast } from "sonner";
+import { useShowErrors } from "./useShowErrors";
 
 export const useSchema = (schema, infos) => {
-  const { success, data = {}, error = {} } = schema.safeParse(infos);
-  if (!success) error.errors.forEach(({ message }) => toast.error(message));
+  const result = schema.safeParse(infos);
+  
+  if (!result.success) {
+    const errors = result.error.errors;
+    useShowErrors(errors)
 
-  return { success, data, error }
-}
+    return {
+      success: false,
+      data: null,
+      errors: errors
+    };
+  }
+
+  return {
+    success: true,
+    data: result.data,
+    errors: []
+  };
+};

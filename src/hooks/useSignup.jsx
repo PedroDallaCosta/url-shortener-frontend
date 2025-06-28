@@ -1,8 +1,11 @@
 import { z } from "zod";
-import { toast } from "sonner";
-import { loginUser } from "@/service/api";
+import { signUpUser } from "@/service/signUpUser";
 import { useState } from "react";
 import { useSchema } from "./useSchema";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "@/context/userContext";
+import { useShowErrors } from "./useShowErrors";
+import { useForm } from 'react-hook-form'
 
 const credentialSchema = z.object({
   email: z.string().email({ message: "Invalid e-mail" }),
@@ -14,29 +17,30 @@ const credentialSchema = z.object({
 });
 
 export const useSignup = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false)
+  const { updateUser } = useUserContext()
+  const navigate = useNavigate();
 
-  const signUp = async (e) => {
-    e.preventDefault()
-
-    const infos = { email: email, password: password }
+  const onSubmit = async (infos) => {
     const { success, data = {} } = useSchema(credentialSchema, infos)
     if (!success) return
+    setLoading(true)
 
     try {
-      const result = await loginUser(data)
-      if (!result.success) throw new Error(result.error?.message ?? "Failed to signup")
-
-      toast.success("Signup successfully")
-    } catch (loginErro) {
-      toast.error(loginErro instanceof Error ? loginErro.message : "Unknow error")
+      const { userId } = await signUpUser(data)
+      updateUser({ userId })
+      navigate("/")
+    } catch (errors) {
+      useShowErrors(errors);
     }
+
+    setLoading(false)
   }
 
   return {
-    setEmail,
-    setPassword,
-    signUp
+    handleSubmit: handleSubmit(onSubmit),
+    register,
+    loading,
   }
 }

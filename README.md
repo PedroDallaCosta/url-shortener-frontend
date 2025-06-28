@@ -17,6 +17,15 @@ Due to limited personal availability, progress may be gradual, but the project w
 - **Services:** API and business logic are in `src/service`.
 - **Testing:** Automated tests should be placed in `__tests__` using Jest and React Testing Library.
 
+## Technologies Used
+
+-   [React](https://react.dev/)
+-   [Vite](https://vitejs.dev/)
+-   [TailwindCSS](https://tailwindcss.com/)
+-   [React Router](https://reactrouter.com/)
+-   [Zod](https://zod.dev/)
+-   [Axios](https://axios-http.com/)
+
 ## Contributing
 
 Contributions, suggestions, and feedback are encouraged. Feel free to open issues or submit pull requests.
@@ -29,14 +38,17 @@ Contributions, suggestions, and feedback are encouraged. Feel free to open issue
 
 1. Make sure you have [Node.js](https://nodejs.org/) installed.  
 2. Install `pnpm` globally if you haven't already:  
+
    ```sh
    npm install -g pnpm
    ```
 3. Install project dependencies:
+
    ```sh
    pnpm install
    ```
 4. Start the development server:
+
    ```sh
    pnpm dev
    ```
@@ -45,6 +57,7 @@ Contributions, suggestions, and feedback are encouraged. Feel free to open issue
 ## Running Tests
 
 To run automated tests (after adding them):
+
 ```sh
 pnpm test
 ```
@@ -60,9 +73,4 @@ This README will be updated as the project evolves.
 <img width="948" alt="Screenshot_3" src="https://github.com/user-attachments/assets/4f99d7d3-8aa9-4bc4-b379-6d2ea718f06c" />
 <img width="946" alt="Screenshot_2" src="https://github.com/user-attachments/assets/5519291a-3c94-41bc-9ca0-6ee2194aea77" />
 <img width="959" alt="Screenshot_1" src="https://github.com/user-attachments/assets/ec0975a2-38f7-4ea9-8c3d-0404dc827558" />
-<<<<<<< HEAD
-=======
-
->>>>>>> 7c7a82e752fdb37b47a6ecef068ac0f3dfcb640e
 <img width="944" alt="Screenshot_1" src="https://github.com/user-attachments/assets/1a17f1d0-c976-40bd-9c68-bf48968095b9" />
-

@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { toast } from "sonner"
-import { getUrlDetails } from '@/service/api';
+import { useParams } from 'react-router-dom';
+import { useDetails } from '@/hooks/useDetails';
 
 import UrlData from '@/components/Details/UrlData';
 import Title from '@/components/Title';
@@ -9,31 +7,7 @@ import SubTitle from '@/components/SubTitle';
 
 export default function UrlDetails() {
   const { shortId } = useParams();
-  const [urlData, setUrlData] = useState(null);
-
-  useEffect(() => {
-    const fetchUrlDetails = async () => {
-      try {
-        if (!shortId || shortId === undefined) {
-          throw new Error("Invalid shortId provided");
-        }
-
-        const result = await getUrlDetails(shortId);
-        if (!result.success) {
-          const msg = result.error?.message ?? "Failed to fetch URL details";
-          throw new Error(msg);
-        }
-
-        const { data } = result;
-        setUrlData(data);
-      } catch (apiError) {
-        const errorMessage = apiError instanceof Error ? apiError.message : "Unknown error";
-        toast.error(errorMessage);
-      }
-    };
-
-    fetchUrlDetails();
-  }, [shortId]);
+  const urlData = useDetails(shortId)
 
   return (
     <div className='flex flex-col items-center justify-center p-2 mt-6'>

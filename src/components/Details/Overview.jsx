@@ -8,7 +8,7 @@ import {
 import CardC from "@/components/Details/Card"
 import Title from "@/components/Title"
 
-export default function Overview({ clicks, uniqueClicks, topReferrers, url, createdAt, passwordProtected, expiresAt, path }) {
+export default function Overview({ clicks, unique_clicks, referrer, url, created_at, passwordProtected, expire_at, short }) {
   const details = [
     {
       title: "Destionation URL",
@@ -16,7 +16,7 @@ export default function Overview({ clicks, uniqueClicks, topReferrers, url, crea
     },
     {
       title: "Created",
-      value: createdAt,
+      value: created_at,
     },
     {
       title: "Password Protected",
@@ -24,11 +24,11 @@ export default function Overview({ clicks, uniqueClicks, topReferrers, url, crea
     },
     {
       title: "Expiration Date",
-      value: expiresAt
+      value: expire_at
     },
     {
       title: "Path",
-      value: path
+      value: short
     }
   ]
 
@@ -36,8 +36,8 @@ export default function Overview({ clicks, uniqueClicks, topReferrers, url, crea
     <div className="w-full mt-5 h-full">
       <div className="w-full flex justify-between items-center sm:gap-5 gap-2">
         <CardC title="Total Clicks" description={clicks}></CardC>
-        <CardC title="Unique Clicks" description={uniqueClicks}></CardC>
-        <CardC title="Top Referrer" description={topReferrers}></CardC>
+        <CardC title="Unique Clicks" description={unique_clicks}></CardC>
+        <CardC title="Top Referrer" description={referrer}></CardC>
       </div>
 
       <Title className={"mt-7 text-xl"}>Details</Title>

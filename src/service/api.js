@@ -1,51 +1,40 @@
-const DOMAIN = import.meta.env.REACT_APP_DOMAIN || "localhost:5173";
-const PROTOCOL_APP = import.meta.env.REACT_APP_PROTOCOL || "http";
+import axios from 'axios';
 
-export const createShortUrl = async (data) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+const api = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
+  withCredentials: true,
+});
 
-  // Simulate API call to create a short URL
-  const response = {
-    url: "/url/u512n312mas",
-    shortUrl: `${PROTOCOL_APP}://${DOMAIN}/details/u512n312mas`,
-    sucess: true,
-    error: {
-      message: "API is not defined",
-      status: 401
-    }
-  }
-
-  if (!response.sucess) return response;
-  return { success: true, shortUrl: response.shortUrl, url: response.url };
-};
-
-export const getUrlDetails = async (shortId) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  // Simulate API call to get URL details
-  const response = {
-    url: `${PROTOCOL_APP}://${DOMAIN}/u512n312mas`,
-    shortId: shortId,
-    totalClicks: 100,
-    uniqueClicks: 75,
-    referrer: "dopenuis.com",
-    createdAt: "2023-10-01T12:00:00Z",
-    expiresAt: "2024-10-01T12:00:00Z",
-    passwordProtected: false,
-  };
-
-  return { success: true, data: response };
-};
-
-export const loginUser = async(user) => {
-  // Simulate API call to login
-  const response = {
-    success: true,
-    error: {
-      status: 401,
-      message: "Invalid credentials"
-    }
-  }
-
-  return response
+const erros_status = {
+  401: 'Não autorizado. Por favor, faça login novamente.',
+  403: 'Acesso negado.',
+  404: 'Recurso não encontrado.',
+  422: 'Dados inválidos.',
+  500: 'Erro interno do servidor.'
 }
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error?.response?.status || 500;
+    const data = error?.response?.data || {};
+
+    const errorResponse = {
+      success: false,
+      error: {
+        status,
+        message: data.message || undefined,
+        errors: data.errors || [],
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    if (!errorResponse.error.message) {
+      erros_status[status] || 'Erro inesperado.';
+    }
+
+    return Promise.reject(errorResponse);
+  }
+);
+
+export default api;

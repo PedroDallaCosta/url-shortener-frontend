@@ -28,7 +28,8 @@ export default function UrlData({ urlData }) {
     </div>
   )
 
-  const { totalClicks, uniqueClicks, referrer, createdAt, url, expiresAt, passwordProtected, path } = urlData;
+  const { clicks, unique_clicks, referrer = "No data", created_at, expire_at, url, passwordProtected, short } = urlData;
+  console.log("expires_at: ", JSON.stringify(urlData))
   return (
     <>
       <InputButton url={url}></InputButton>
@@ -43,14 +44,14 @@ export default function UrlData({ urlData }) {
 
           <TabsContent value="overview">
             <Overview
-              clicks={totalClicks}
-              uniqueClicks={uniqueClicks}
-              topReferrers={referrer}
+              clicks={clicks}
+              unique_clicks={unique_clicks}
+              referrer={referrer}
               url={url}
-              createdAt={createdAt}
+              created_at={created_at}
               passwordProtected={passwordProtected}
-              expiresAt={expiresAt}
-              path={path}
+              expire_at={expire_at}
+              short={short}
             ></Overview>
           </TabsContent>
 
@@ -59,7 +60,7 @@ export default function UrlData({ urlData }) {
           </TabsContent>
 
           <TabsContent value="metrics">
-            <Metrics totalClicks={totalClicks} uniqueClicks={uniqueClicks} referrer={referrer}></Metrics>
+            <Metrics clicks={clicks} unique_clicks={unique_clicks} referrer={referrer}></Metrics>
           </TabsContent>
         </Tabs>
       </div>
