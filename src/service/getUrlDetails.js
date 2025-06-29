@@ -5,6 +5,6 @@ export const getUrlDetails = async (shortId) => {
     const response = await api.get(`/api/urls/details/${shortId}`)
     return response?.data?.urlData
   } catch (error) {
-   throw error?.response?.data?.errors || error?.message || ['An unexpected error occurred'];
+    throw error?.response?.data?.errors || error?.error?.errors || error?.message || ['An unexpected error occurred'];
   }
 };

@@ -8,11 +8,11 @@ import {
 import CardC from "@/components/Details/Card"
 import Title from "@/components/Title"
 
-export default function Overview({ clicks, unique_clicks, referrer, url, created_at, passwordProtected, expire_at, short }) {
+export default function Overview({ clicks, unique_clicks, referrer, urlDestination, created_at, passwordProtected, expire_at, short }) {
   const details = [
     {
       title: "Destionation URL",
-      value: url,
+      value: urlDestination,
     },
     {
       title: "Created",

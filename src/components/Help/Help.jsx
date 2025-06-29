@@ -1,5 +1,5 @@
 export default function Help({ title, description, icon }) {
-  const Icon = icon; // Corrigido aqui
+  const Icon = icon; 
   return (
     <div className="w-full flex items-center gap-3">
       <Icon className="w-9 h-9 rounded-[6px] text-white bg-[#293038] p-[11px]" />

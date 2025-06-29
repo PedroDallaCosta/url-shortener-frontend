@@ -1,6 +1,4 @@
 import Title from "@/components/Title"
-import { description } from "../Details/Graph"
-import SubTitle from "../SubTitle"
 import Help from "./Help"
 import { Link, ChartNoAxesCombined, CircleUserRound, Lock, Headset, CreditCard, ShieldQuestionMark } from 'lucide-react';
 
@@ -68,12 +66,12 @@ export default function Helps() {
   return (
     <div className="mt-7">
       {Infos && Infos.map(({ title, helps }) => (
-        <div className="mt-4">
+        <div className="mt-4" key={title}>
           <Title className="text-base">{title}</Title>
 
           <div className="w-full flex flex-col gap-3 mt-4">
             {helps && helps.map(({ title, description, icon }) => (
-              <Help title={title} description={description} icon={icon}></Help>
+              <Help title={title} description={description} icon={icon} key={title}></Help>
             ))}
           </div>
         </div>

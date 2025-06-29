@@ -33,7 +33,7 @@ export default function Accordions() {
         className="w-full h-"
       >
         {Acoordions && Acoordions.map(({ title, description }, index) => (
-          <AccordionItem value={`item-${index}`} className="mb-4">
+          <AccordionItem value={`item-${index}`} className="mb-4" key={title}>
             <AccordionTrigger>{title}</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance">
               <p>{description}</p>

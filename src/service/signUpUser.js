@@ -10,6 +10,6 @@ export const signUpUser = async (user) => {
       message: response?.data?.message || 'Login realizado com sucesso',
     }
   } catch (error) {
-   throw error?.response?.data?.errors || error?.message || ['An unexpected error occurred'];
+    throw error?.response?.data?.errors || error?.error?.errors || error?.message || ['An unexpected error occurred'];
   }
 }

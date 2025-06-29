@@ -7,6 +7,6 @@ export const createShortUrl = async (data) => {
 
     return { success: true, urlShort, short }
   } catch (error) {
-    throw error?.response?.data?.errors || error?.message || ['An unexpected error occurred'];
+    throw error?.response?.data?.errors || error?.error?.errors || error?.message || ['An unexpected error occurred'];
   }
 }

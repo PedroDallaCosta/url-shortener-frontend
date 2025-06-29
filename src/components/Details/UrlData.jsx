@@ -28,11 +28,11 @@ export default function UrlData({ urlData }) {
     </div>
   )
 
-  const { clicks, unique_clicks, referrer = "No data", created_at, expire_at, url, passwordProtected, short } = urlData;
-  console.log("expires_at: ", JSON.stringify(urlData))
+  const { clicks, unique_clicks, referrer = "No data", created_at, expire_at, passwordProtected, short, urlDetails, urlShort, urlDestination, graphClicks } = urlData;
+  
   return (
     <>
-      <InputButton url={url}></InputButton>
+      <InputButton urlShort={urlShort}></InputButton>
 
       <div className="flex flex-col w-full gap-6 mt-6">
         <Tabs defaultValue="overview">
@@ -47,7 +47,7 @@ export default function UrlData({ urlData }) {
               clicks={clicks}
               unique_clicks={unique_clicks}
               referrer={referrer}
-              url={url}
+              urlDestination={urlDestination}
               created_at={created_at}
               passwordProtected={passwordProtected}
               expire_at={expire_at}
@@ -60,7 +60,7 @@ export default function UrlData({ urlData }) {
           </TabsContent>
 
           <TabsContent value="metrics">
-            <Metrics clicks={clicks} unique_clicks={unique_clicks} referrer={referrer}></Metrics>
+            <Metrics clicks={clicks} unique_clicks={unique_clicks} referrer={referrer} graphClicks={graphClicks}></Metrics>
           </TabsContent>
         </Tabs>
       </div>

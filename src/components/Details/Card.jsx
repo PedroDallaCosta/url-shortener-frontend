@@ -15,7 +15,7 @@ export default function CardC({ title, description }) {
           </CardTitle>
 
           <CardDescription className="text-white font-bold text-[1.2rem] sm:text-[1.45rem] md:text-[1.6rem] truncate">
-            {description.toLocaleString()}
+            {!description && description != 0 ? "" : description.toLocaleString()}
           </CardDescription>
         </CardHeader>
       </Card>

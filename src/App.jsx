@@ -16,6 +16,7 @@ const Login = lazy(() => import('@/pages/Login'));
 const Signup = lazy(() => import('@/pages/Signup'));
 const Logout = lazy(() => import('@/pages/Logout'));
 const Authenticator = lazy(() => import('@/pages/Authenticator'))
+const Unlock = lazy(() => import('@/pages/Unlock'))
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                   </Authenticator>
                 } />
 
+                <Route path="/unlock/:shortId" element={<Unlock />}></Route>
                 <Route path="/details/:shortId" element={<UrlDetails />} />
               </Routes>
             </Suspense>

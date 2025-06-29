@@ -58,8 +58,9 @@ export default function Advance({ register, control, selectedDate }) {
               mode="single"
               selected={field.value}
               captionLayout="dropdown"
+              disabled={(date) => date < new Date() }
               onSelect={(date) => {
-                field.onChange(date);  
+                field.onChange(date);
                 setOpen(false);
               }}
             />
