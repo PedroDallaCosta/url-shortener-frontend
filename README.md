@@ -74,3 +74,4 @@ This README will be updated as the project evolves.
 <img width="946" alt="Screenshot_2" src="https://github.com/user-attachments/assets/5519291a-3c94-41bc-9ca0-6ee2194aea77" />
 <img width="959" alt="Screenshot_1" src="https://github.com/user-attachments/assets/ec0975a2-38f7-4ea9-8c3d-0404dc827558" />
 <img width="944" alt="Screenshot_1" src="https://github.com/user-attachments/assets/1a17f1d0-c976-40bd-9c68-bf48968095b9" />
+<img width="958" alt="Screenshot_1" src="https://github.com/user-attachments/assets/793f671f-067c-42bc-b7aa-b5d7a1c3250e" />
