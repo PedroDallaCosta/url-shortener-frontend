@@ -20,7 +20,7 @@ export const usePassword = (shortId) => {
     setLoading(true)
 
     try {
-      const response = await api.get(`/api/urls/unlock/${shortId}`, { params: data })
+      const response = await api.post(`/api/urls/unlock/${shortId}`, data)
       const { urlDestination } = response?.data
       if (urlDestination) window.location.href = urlDestination
     } catch (error) {
