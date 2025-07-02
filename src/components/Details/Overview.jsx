@@ -8,7 +8,7 @@ import {
 import CardC from "@/components/Details/Card"
 import Title from "@/components/Title"
 
-export default function Overview({ clicks, unique_clicks, referrer, urlDestination, created_at, passwordProtected, expire_at, short }) {
+export default function Overview({ clicks, unique_clicks, referrer, urlDestination, created_at, havePassword, expire_date, short }) {
   const details = [
     {
       title: "Destionation URL",
@@ -20,11 +20,11 @@ export default function Overview({ clicks, unique_clicks, referrer, urlDestinati
     },
     {
       title: "Password Protected",
-      value: passwordProtected ? "Yes" : "No",
+      value: havePassword ? "Yes" : "No",
     },
     {
       title: "Expiration Date",
-      value: expire_at
+      value: expire_date
     },
     {
       title: "Path",

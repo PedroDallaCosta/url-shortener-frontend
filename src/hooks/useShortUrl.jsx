@@ -58,8 +58,8 @@ export const useShortUrl = async (infos) => {
 
   try {
     const result = await createShortUrl(data);
-    toast.message("Link shortened successfully!", { description: result.urlShort || "/" });
-    return result.urlShort
+    toast.message("Link shortened successfully!", { description: result.urlDetails || "/" });
+    return result.urlDetails
   } catch (errors) {
     useShowErrors(errors);
   }

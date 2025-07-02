@@ -28,7 +28,7 @@ export default function UrlData({ urlData }) {
     </div>
   )
 
-  const { clicks, unique_clicks, referrer = "No data", created_at, expire_at, passwordProtected, short, urlDetails, urlShort, urlDestination, graphClicks } = urlData;
+  const { clicks, unique_clicks, referrer = "No data", created_at, expire_date, havePassword, short, urlDetails, urlShort, urlDestination, graphClicks } = urlData;
   
   return (
     <>
@@ -49,8 +49,8 @@ export default function UrlData({ urlData }) {
               referrer={referrer}
               urlDestination={urlDestination}
               created_at={created_at}
-              passwordProtected={passwordProtected}
-              expire_at={expire_at}
+              havePassword={havePassword}
+              expire_date={expire_date}
               short={short}
             ></Overview>
           </TabsContent>

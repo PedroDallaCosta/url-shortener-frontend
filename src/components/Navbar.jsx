@@ -4,7 +4,7 @@ import { useUserContext } from '@/context/userContext';
 import starUrl from '@/assets/star.svg';
 
 const navItems = [
-  { title: "Dashboard", to: "/dashboard" },
+  { title: "Dashboard", to: "/dashboard", needLogin: true },
   { title: "Pricing", to: "/pricing" },
   { title: "Blog", to: "/blog" },
   { title: "Help", to: "/help" },
@@ -21,13 +21,16 @@ export default function Navbar() {
       </Link>
 
       <ul className="flex items-center">
-        {navItems.map(({ title, to }, index) => (
-          <li key={to}>
-            <NavLink to={to} className={({ isActive }) => `mx-3 text-sm hover:text-[#2194F2] ${isActive ?  "!text-[#21acf2]" : "text-white"}`}>{title}</NavLink>
-          </li>
+        {navItems.map(({ title, to, needLogin = false }, index) => (
+          !needLogin || user ?
+            <li key={to}>
+              <NavLink to={to} className={({ isActive }) => `mx-3 text-sm hover:text-[#2194F2] ${isActive ? "!text-[#21acf2]" : "text-white"}`}>{title}</NavLink>
+            </li>
+          : 
+            <li key={to}></li>
         ))}
 
-        { user?.userId ? (
+        {user?.userId ? (
           <li>
             <Link to="/logout">
               <Button className="rounded-4xl bg-[#293038] hover:bg-[#1b2026]">Log out</Button>

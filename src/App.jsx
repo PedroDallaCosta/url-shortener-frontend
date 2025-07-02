@@ -30,11 +30,12 @@ function App() {
             <Suspense fallback={<div className="text-center mt-10"></div>}>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/help" element={<Help />} />
                 <Route path="/logout" element={<Logout />} />
+
+                <Route path="/dashboard" element={<Dashboard />} />
 
                 <Route path="/login" element={
                   <Authenticator>

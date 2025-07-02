@@ -6,6 +6,5 @@ export default function Authenticator({ children }) {
   const { user } = useUserContext()
 
   if (user) navigate("/")
-
   return children
 }
