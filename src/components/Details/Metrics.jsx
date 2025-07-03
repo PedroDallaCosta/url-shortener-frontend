@@ -9,11 +9,11 @@ import Item from "@/components/Details/Item"
 import Graph from "@/components/Details/Graph"
 import Title from "@/components/Title"
 
-export default function Metrics({ clicks = 0, unique_clicks = 0, referrer = "...", graphClicks = [] }) {
+export default function Metrics({ totalClicks = 0, unique_clicks = 0, referrer = "...", graph = [] }) {
     let daysToSubtract = 30
     let variation = 0
 
-    const filteredGraph = graphClicks.filter((item) => {
+    const filteredGraph = graph.filter((item) => {
         const date = new Date(item.date)
         const referenceDate = new Date()
         const startDate = new Date(referenceDate)
@@ -38,7 +38,7 @@ export default function Metrics({ clicks = 0, unique_clicks = 0, referrer = "...
             <Card className="w-full mt-5 h-70 bg-transparent border-[#3B4A54] shadow-none">
                 <CardHeader>
                     <CardTitle className="text-white font-medium text-[0.9rem]">Link Clicks Over Time</CardTitle>
-                    <CardDescription className="text-white font-bold text-[1.75rem]">{clicks.toLocaleString()}</CardDescription>
+                    <CardDescription className="text-white font-bold text-[1.75rem]">{totalClicks.toLocaleString()}</CardDescription>
                     <CardDescription className="text-[#A3ABB5] font-regular text-[0.9rem]">Last 30 Days <span className={variation > 0 ? "text-green-500" : "text-red-500"}>{variation.toFixed(2)}%</span></CardDescription>
                     <Graph sortedGraph={sortedGraph} ></Graph>
                 </CardHeader>
@@ -47,7 +47,7 @@ export default function Metrics({ clicks = 0, unique_clicks = 0, referrer = "...
             <Title title={"Historical Data"} className={"mt-7"}></Title>
 
             <div className="w-full h-17 flex flex-col justify-between">
-                <Item title="Total Clicks" value={clicks} />
+                <Item title="Total Clicks" value={totalClicks} />
                 <Item title="Unique Clicks" value={unique_clicks} />
                 <Item title="Referrer" value={referrer} />
             </div>

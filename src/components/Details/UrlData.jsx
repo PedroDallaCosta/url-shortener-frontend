@@ -28,8 +28,8 @@ export default function UrlData({ urlData }) {
     </div>
   )
 
-  const { clicks, unique_clicks, referrer = "No data", created_at, expire_date, havePassword, short, urlDetails, urlShort, urlDestination, graphClicks } = urlData;
-  
+  const { totalClicks, unique_clicks, referrer = "No data", created_at, expire_date, havePassword, short, urlDetails, urlShort, urlDestination, graph, countrys } = urlData;
+
   return (
     <>
       <InputButton urlShort={urlShort}></InputButton>
@@ -44,7 +44,7 @@ export default function UrlData({ urlData }) {
 
           <TabsContent value="overview">
             <Overview
-              clicks={clicks}
+              totalClicks={totalClicks}
               unique_clicks={unique_clicks}
               referrer={referrer}
               urlDestination={urlDestination}
@@ -56,11 +56,11 @@ export default function UrlData({ urlData }) {
           </TabsContent>
 
           <TabsContent value="location">
-            <Location></Location>
+            <Location countrys={countrys}></Location>
           </TabsContent>
 
           <TabsContent value="metrics">
-            <Metrics clicks={clicks} unique_clicks={unique_clicks} referrer={referrer} graphClicks={graphClicks}></Metrics>
+            <Metrics totalClicks={totalClicks} unique_clicks={unique_clicks} referrer={referrer} graph={graph}></Metrics>
           </TabsContent>
         </Tabs>
       </div>

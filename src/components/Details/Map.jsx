@@ -6,14 +6,24 @@ import {
   Geography,
 } from 'react-simple-maps';
 
-const countryClicks = {
-  AUS: 10,
-  US: 5,
-  FR: 3,
-};
-
-export default function Map() {
+export default function Map({ countrys }) {
   const [tooltipContent, setTooltipContent] = useState('');
+
+  const getColor = (clicks) => {
+    if (clicks === 0) return '#F4ECDB';
+
+    const maxClicks = 20;
+    const ratio = Math.min(clicks / maxClicks, 1);
+
+    const start = [244, 236, 219];
+    const end = [102, 70, 30];
+
+    const r = Math.round(start[0] + (end[0] - start[0]) * ratio);
+    const g = Math.round(start[1] + (end[1] - start[1]) * ratio);
+    const b = Math.round(start[2] + (end[2] - start[2]) * ratio);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
 
   return (
     <div style={{ position: 'relative' }}>
@@ -47,15 +57,16 @@ export default function Map() {
         <Geographies geography={'../public/features.json'} className="select-none">
           {({ geographies }) =>
             geographies.map((geo) => {
-              const nameCountry = geo?.properties?.name || ""
-              const countryCode = geo.id;
-              const clicks = countryClicks[countryCode] || 0;
+              const nameCountry = (geo?.properties?.name).toLowerCase() || ""
+              const { clicks = 0 } = countrys.find(country => country.country == nameCountry) || {}
+
+              console.log(`Country = ${nameCountry} / ${countrys.find(country => country.country == nameCountry)}`)
 
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={clicks > 0 ? '#CCA462' : '#F4ECDB'}
+                  fill={getColor(clicks)}
                   stroke="#bbb"
                   style={{
                     default: {

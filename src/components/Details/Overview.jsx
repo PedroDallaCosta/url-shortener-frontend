@@ -8,7 +8,7 @@ import {
 import CardC from "@/components/Details/Card"
 import Title from "@/components/Title"
 
-export default function Overview({ clicks, unique_clicks, referrer, urlDestination, created_at, havePassword, expire_date, short }) {
+export default function Overview({ totalClicks, unique_clicks, referrer, urlDestination, created_at, havePassword, expire_date, short }) {
   const details = [
     {
       title: "Destionation URL",
@@ -35,7 +35,7 @@ export default function Overview({ clicks, unique_clicks, referrer, urlDestinati
   return (
     <div className="w-full mt-5 h-full">
       <div className="w-full flex justify-between items-center sm:gap-5 gap-2">
-        <CardC title="Total Clicks" description={clicks}></CardC>
+        <CardC title="Total Clicks" description={totalClicks}></CardC>
         <CardC title="Unique Clicks" description={unique_clicks}></CardC>
         <CardC title="Top Referrer" description={referrer}></CardC>
       </div>
