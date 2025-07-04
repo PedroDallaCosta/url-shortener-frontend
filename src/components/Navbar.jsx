@@ -5,8 +5,8 @@ import starUrl from '@/assets/star.svg';
 
 const navItems = [
   { title: "Dashboard", to: "/dashboard", needLogin: true },
-  { title: "Pricing", to: "/pricing" },
-  { title: "Blog", to: "/blog" },
+  // { title: "Pricing", to: "/pricing" },
+  // { title: "Blog", to: "/blog" },
   { title: "Help", to: "/help" },
 ]
 

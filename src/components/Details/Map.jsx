@@ -26,23 +26,10 @@ export default function Map({ countrys }) {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className='relative bg-red-900 h-full w-full'>
       {tooltipContent && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 10,
-            left: 10,
-            padding: '6px 10px',
-            backgroundColor: 'rgba(0,0,0,0.7)',
-            color: 'white',
-            borderRadius: 4,
-            pointerEvents: 'none',
-            fontSize: 12,
-            zIndex: 1000,
-          }}
-        >
-          {tooltipContent}
+        <div className='absolute top-4 left-4 px-2 py-4 bg-[rgba(0,0,0,0.7)] text-white rounded-xs pointer-none text-xs z-1000'>
+          {`${tooltipContent.charAt(0).toUpperCase()}${tooltipContent.slice(1)}`}
         </div>
       )}
 
@@ -51,7 +38,7 @@ export default function Map({ countrys }) {
           rotate: [0, 0, 0],
           scale: 125,
         }}
-        style={{ width: '100%', height: 'auto', backgroundColor: '#85B9B5' }}
+        className='w-full h-full bg-[#85B9B5]'
         projection="geoMercator"
       >
         <Geographies geography={'../public/features.json'} className="select-none">
@@ -59,8 +46,6 @@ export default function Map({ countrys }) {
             geographies.map((geo) => {
               const nameCountry = (geo?.properties?.name).toLowerCase() || ""
               const { clicks = 0 } = countrys.find(country => country.country == nameCountry) || {}
-
-              console.log(`Country = ${nameCountry} / ${countrys.find(country => country.country == nameCountry)}`)
 
               return (
                 <Geography

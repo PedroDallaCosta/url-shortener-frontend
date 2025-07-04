@@ -4,9 +4,23 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table"
+import { Pen } from 'lucide-react';
 
 import CardC from "@/components/Details/Card"
 import Title from "@/components/Title"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "../ui/button";
+import { Label } from "recharts";
+import { Input } from "../ui/input";
 
 export default function Overview({ totalClicks, unique_clicks, referrer, urlDestination, created_at, havePassword, expire_date, short }) {
   const details = [
@@ -21,10 +35,12 @@ export default function Overview({ totalClicks, unique_clicks, referrer, urlDest
     {
       title: "Password Protected",
       value: havePassword ? "Yes" : "No",
+      edit: true,
     },
     {
       title: "Expiration Date",
-      value: expire_date
+      value: expire_date,
+      edit: true,
     },
     {
       title: "Path",
@@ -41,13 +57,48 @@ export default function Overview({ totalClicks, unique_clicks, referrer, urlDest
       </div>
 
       <Title className={"mt-7 text-xl"}>Details</Title>
-      
+
       <Table>
         <TableBody>
-          {details.map((detail) => (
-            <TableRow key={detail.title} className="hover:bg-transparent">
-              <TableCell className="font-regular text-xs text-[#A3ABB5] py-5 px-0">{detail.title}</TableCell>
-              <TableCell className="font-regular text-xs text-white text-right">{detail.value}</TableCell>
+          {details.map(({ title, value, edit }) => (
+            <TableRow key={title} className="hover:bg-transparent h-full flex items-center justify-between">
+              <TableCell className="font-regular text-xs text-[#A3ABB5] py-5 px-0">{title}</TableCell>
+              <TableCell className="font-regular text-xs text-white flex justify-end items-center">
+                <span>{value}</span>
+                {edit && value != "" && value != "No" &&
+                  <Dialog>
+                    <form>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className="border-none shadow-none bg-transparent w-0 h-6 ml-3 hover:bg-transparent hover:scale-120">
+                          <Pen className="w-3 text-white"></Pen>
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px] bg-[#12151a] border-[#3B4A54]">
+                        <DialogHeader>
+                          <DialogTitle>Edit {title}</DialogTitle>
+                          <DialogDescription>
+                            Make changes to your {title.toLowerCase()} here. Click save when you&apos;re
+                            done.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4">
+                          <div className="grid gap-3">
+                            <Label htmlFor="name-1">Name</Label>
+                            <Input id="name-1" name="name" defaultValue={value} />
+                          </div>
+                        </div>
+                        <DialogFooter>
+                          <DialogClose asChild>
+                            <Button variant="outline">Cancel</Button>
+                          </DialogClose>
+                          <Button type="submit" className="bg-[#2194F2]">Save changes</Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </form>
+                  </Dialog>
+
+                }
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -55,3 +106,7 @@ export default function Overview({ totalClicks, unique_clicks, referrer, urlDest
     </div>
   )
 }
+
+//  <span className="ml-2 hover:scale-120 hover:cursor-pointer" onClick={() => onClickChange()}>
+//             <Pen className="w-3"></Pen>
+//           </span>

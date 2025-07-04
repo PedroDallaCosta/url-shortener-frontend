@@ -12,8 +12,8 @@ export default function ContentMenu({ filterLinks }) {
   if (!filterLinks || filterLinks.length <= 0) return <></>
 
   const navigate = useNavigate()
-  const editClickPage = (short) => {
-    navigate(`/details/${short}`)
+  const goTopage = (url) => {
+    navigate(url)
   }
 
   return (
@@ -30,14 +30,14 @@ export default function ContentMenu({ filterLinks }) {
         </TableHeader>
         <TableBody >
           {
-            filterLinks.map(({ havePassword, urlDestination, short, linkShort, linkDetails, created_at, totalClicks, isExpire }) => {
+            filterLinks.map(({ urlDestination, short, linkShort, created_at, totalClicks, isExpire }) => {
               return (
                 <TableRow key={short} className="h-15 hover:!bg-transparent border-[#ffffff47]">
                   <TableCell className="font-light text-[0.8em] px-5">{linkShort}</TableCell>
-                  <TableCell className="font-light text-[0.8em]">{urlDestination.length <= 25 ? urlDestination : `${urlDestination.slice(0, 25)}...`}</TableCell>
+                  <TableCell className="font-light text-[0.8em] hover:cursor-pointer hover:underline" onClick={() => window.location.href = urlDestination}>{urlDestination.length <= 25 ? urlDestination : `${urlDestination.slice(0, 25)}...`}</TableCell>
                   <TableCell className="font-light text-[0.8em]">{new Date(created_at).toLocaleString()}</TableCell>
                   <TableCell className="font-light text-[0.8em]">{totalClicks}</TableCell>
-                  <TableCell className="font-light text-[0.8em] hover:underline hover:cursor-pointer" onClick={() => editClickPage(short)}>Edit</TableCell>
+                  <TableCell className="font-light text-[0.8em] hover:underline hover:cursor-pointer" onClick={() => goTopage(`/details/${short}`)}>Edit</TableCell>
                 </TableRow>
               );
             })
