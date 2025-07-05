@@ -15,7 +15,7 @@ const erros_status = {
 
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
     const status = error?.response?.status || 500;
     const data = error?.response?.data || {};
 
@@ -28,6 +28,16 @@ api.interceptors.response.use(
         timestamp: new Date().toISOString()
       }
     };
+
+    if (errorResponse?.error?.message.includes("Não autorizado: The token has expired at")) {
+      const originalRequest = error.config;
+      try {
+        const response = await api.post("/api/auth/refreshToken")
+        return api(originalRequest);
+      } catch (err) {
+        errorResponse.error.message = err
+      }
+    }
 
     if (!errorResponse.error.message) {
       erros_status[status] || 'Erro inesperado.';
