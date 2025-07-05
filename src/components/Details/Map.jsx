@@ -6,6 +6,8 @@ import {
   Geography,
 } from 'react-simple-maps';
 
+import features from '@/data/features';
+
 export default function Map({ countrys }) {
   const [tooltipContent, setTooltipContent] = useState('');
 
@@ -41,7 +43,7 @@ export default function Map({ countrys }) {
         className='w-full h-full bg-[#85B9B5]'
         projection="geoMercator"
       >
-        <Geographies geography={'../public/features.json'} className="select-none">
+        <Geographies geography={features} className="select-none">
           {({ geographies }) =>
             geographies.map((geo) => {
               const nameCountry = (geo?.properties?.name).toLowerCase() || ""
