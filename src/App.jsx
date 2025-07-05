@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { UserProvider } from "@/context/UserContext";
+import { UserProvider } from "@/context/userContext";
 import { Toaster } from "@/components/ui/sonner"
 
 import Container from '@/components/Container';
