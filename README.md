@@ -8,6 +8,8 @@ This is an open source project for a URL shortener with additional features such
 
 Both the backend and frontend are being developed publicly from the very beginning. The goal is to deliver a simple, secure, and functional solution while sharing the entire development process for educational and collaborative purposes.
 
+🚀 An experimental version is available at: https://url-shortener.up.railway.app/
+
 Due to limited personal availability, progress may be gradual, but the project will be completed and maintained with care. Community participation is welcome at every stage.
 
 ## Architecture
